@@ -16,6 +16,7 @@ class Button extends React.Component {
 	}
 
 	shouldComponentUpdate(nextState) {
+		console.log('button shouldComponentupdate')
 		return nextState !== this.state
 	}
 
