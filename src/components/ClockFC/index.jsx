@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react'
+import style from './style.module.css'
 
-export default () => {
-	const timeCorection = 10800000
+const ClockFC = () => {
 	const [date, setDate] = useState(new Date())
 
 	useEffect(() => {
-		const interval = setInterval(() => { setDate(new Date(Date.now()-date).toLocaleTimeString()) }, 1000)
-		return () => clearInterval(interval)
+		setDate(new Date(0,0,0,0))
+		 setInterval(() => { setDate(new Date(Date.now()-date)) }, 1000)
+		 date.setHours(date.getHours()+3)	
+	}, [])
+
+	useEffect(() => {
+		 clearInterval()
 	}, [date])
-	console.log(date)
+	
+	//console.log(typeof date.toLocaleTimeString())
 	return (
-		<p>date</p>
+		<p className={style.p}>{date.toLocaleTimeString()}</p>
 	)
 }
 
 //.toLocaleTimeString()
+
+export default React.memo(ClockFC)

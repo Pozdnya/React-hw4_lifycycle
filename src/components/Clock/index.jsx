@@ -63,7 +63,7 @@ export default class Clock extends React.Component {
 	}
 
 	componentDidUpdate(prevState) {
-		console.log(' componentDidUpdate: сравнивает state с предыдущим state, для перерендера должен вернуть true')
+		console.log(' componentDidUpdate: сравнивает state с предыдущим state, не запускается есть shouldComponentUpdate вернет false')
 		return prevState !== this.state
 	}
 
